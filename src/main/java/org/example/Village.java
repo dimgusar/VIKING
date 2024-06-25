@@ -41,3 +41,24 @@ public class Village {
             }
         }
     }
+    // перевод инфы про деревню (коротая версия)
+    public String shortInfo(){
+        return String.format("%s%d", Game.villageShortNames.get(theType), level);
+    }
+
+    // координаты деревни в логических единицах (зависят от размера сетки)
+    public int getCellX(int cellSize){
+        return (int)Math.round(longitude*1.0/cellSize);
+    }
+    public int getCellY(int cellSize){
+        return (int)Math.round(lattitude*1.0/cellSize);
+    }
+    // подробное описание деревни
+    @Override
+    public String toString(){
+
+        String info = String.format("%s | ", Game.villageTypeNames.get(theType));
+        info += String.format("Уровень: %d | Широта: %d | Долгота: %d", level,lattitude,longitude);
+
+        return info;
+    }

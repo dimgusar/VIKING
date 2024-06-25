@@ -62,3 +62,26 @@ public class Village {
 
         return info;
     }
+// информация про доступную добычу
+public String getLootInfo(){
+
+    String info = "";
+    int typesCnt = 0;
+    for(var x : LootType.values()){
+        if (all_loot.containsKey(x)) {
+            typesCnt += 1;
+        }
+    }
+    int j = 0;
+    for(var x : LootType.values()){
+        if (all_loot.containsKey(x)) {
+            info += String.format("%s: %d", Game.lootTypeNames.get(x), all_loot.get(x));
+            if(j < typesCnt-1){
+                info += ", ";
+            }
+            j++;
+        }
+    }
+    return info;
+}
+}
